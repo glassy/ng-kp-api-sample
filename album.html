@@ -76,14 +76,14 @@
 
 			$scope.albums = [];
 
-			$http.get(API_SERVER+"albums/?accessToken="+API_KEY).success(function(results) {
+			$http({url: API_SERVER+"albums/?accessToken="+API_KEY, cache: true}).success(function(results) {
 				console.log(results);
 				$scope.albums = results.data;
 				$scope.clickOnAlbum(results.data[0].id);
 			});
 
 			$scope.clickOnAlbum = function(album_id) {
-				$http.get(API_SERVER+"albums/"+album_id+"?accessToken="+API_KEY).success(function(results) {
+				$http({url: API_SERVER+"albums/"+album_id+"?accessToken="+API_KEY, cache: true}).success(function(results) {
 					console.log(results);
 					$scope.album = results.data;
 				});

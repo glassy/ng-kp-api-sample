@@ -72,7 +72,7 @@
 		app.controller('MainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce){
 			$scope.categories = {};
 			$scope.content = $sce.trustAsHtml("請選擇文章");
-			$http.get(API_SERVER+"category/?accessToken="+API_KEY).success(function(results) {
+			$http({url: API_SERVER+"category/?accessToken="+API_KEY, cache: true}).success(function(results) {
 				//console.log(results);
 				var initial_category_id;
 				angular.forEach(results.data,function(item,ind){
@@ -84,7 +84,7 @@
 			});
 
 			$scope.clickOnCategory = function(category_id) {
-				$http.get(API_SERVER+"category/"+category_id+"?accessToken="+API_KEY).success(function(results) {
+				$http({url: API_SERVER+"category/"+category_id+"?accessToken="+API_KEY, cache: true}).success(function(results) {
 					console.log(results);
 					var initial_article;
 					$scope.categories[category_id].posts = [];
