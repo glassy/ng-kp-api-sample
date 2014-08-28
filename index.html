@@ -1,79 +1,69 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="kpApp">
+<head>
+	<meta charset="UTF-8" />
+	
+	<title>柯文哲文章集</title>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Ng-kp-api-sample : 本專案依據「野生柯P官網」的 API 使用範例，修改成 AngularJS 版本">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Ng-kp-api-sample</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/glassy/ng-kp-api-sample">View on GitHub</a>
-
-          <h1 id="project_title">Ng-kp-api-sample</h1>
-          <h2 id="project_tagline">本專案依據「野生柯P官網」的 API 使用範例，修改成 AngularJS 版本</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/glassy/ng-kp-api-sample/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/glassy/ng-kp-api-sample/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="%E6%9F%AF%E6%96%87%E5%93%B2%E9%87%8E%E7%94%9F%E5%AE%98%E7%B6%B2-api-%E4%BD%BF%E7%94%A8%E7%AF%84%E4%BE%8B---angularjs-%E7%89%88%E6%9C%AC" class="anchor" href="#%E6%9F%AF%E6%96%87%E5%93%B2%E9%87%8E%E7%94%9F%E5%AE%98%E7%B6%B2-api-%E4%BD%BF%E7%94%A8%E7%AF%84%E4%BE%8B---angularjs-%E7%89%88%E6%9C%AC"><span class="octicon octicon-link"></span></a>柯文哲野生官網 API 使用範例 - AngularJS 版本</h1>
-
-<p>作　者: Will 保哥
-貢獻者: <a href="https://github.com/chgc">chgc</a></p>
-
-<h2>
-<a name="%E5%B0%88%E6%A1%88%E7%B0%A1%E4%BB%8B" class="anchor" href="#%E5%B0%88%E6%A1%88%E7%B0%A1%E4%BB%8B"><span class="octicon octicon-link"></span></a>專案簡介</h2>
-
-<p>由於 <a href="http://unlimited.kptaipei.tw/">柯文哲野生官網</a> 所提供的 API 使用範例主要以 jQuery 為主，我將其修改為以 AngularJS 版本的 API 呼叫範例，供 AngularJS 初學者研習之用。</p>
-
-<h2>
-<a name="%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F" class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="octicon octicon-link"></span></a>使用方式</h2>
-
-<ul>
-<li>
-<p>本專案的 app.js 檔案中，第 3 行有個 KEY 變數，請先到 <a href="http://unlimited.kptaipei.tw/">柯文哲野生官網</a> 申請 API key 之後，將該變數的值置換成你自己的 API key 即可。如下圖示：</p>
-
-<p><img src="https://cloud.githubusercontent.com/assets/88981/4009092/9643a9e2-29df-11e4-97c6-ead1447295b9.png" alt="image"></p>
-</li>
-</ul><h2>
-<a name="%E8%88%87%E6%88%91%E8%81%AF%E7%B5%A1" class="anchor" href="#%E8%88%87%E6%88%91%E8%81%AF%E7%B5%A1"><span class="octicon octicon-link"></span></a>與我聯絡</h2>
-
-<ul>
-<li>粉絲頁: <a href="https://www.facebook.com/will.fans">Will 保哥的技術交流中心</a>
-</li>
-<li>部落格: <a href="http://blog.miniasp.com/">The Will Will Web</a>
-</li>
-<li>噗　浪: <a href="http://www.plurk.com/willh/invite">★★★ Will 保哥的噗浪 ★★★</a>
-</li>
-</ul>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Ng-kp-api-sample maintained by <a href="https://github.com/glassy">glassy</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<style>
+	.category,.article{	
+		cursor:pointer;
+	}
+	</style>
+</head>
+<body ng-controller="MainCtrl as main">
+	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="index.html" class="navbar-brand">柯文哲 API 範例站</a>
+			</div>
+			<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="index.html">文章範例</a>
+					</li>
+					<li>
+						<a href="album.html">相簿範例</a>
+					</li>
+					<li>
+						<a href="video.html">影片範例</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://kptaipei.tw" target="_blank">柯文哲官網</a></li>
+					<li>
+						<a href="http://unlimited.kptaipei.tw" target="_blank">野生官網活動介紹</a>
+					</li>	        
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container">
+		
+		<div class="col-md-4">
+			<h2> 文章類別目錄</h2>
+			<ul class="categories">
+				<li class='category' ng-repeat="(key, item) in main.categories" ng-click="main.clickOnCategory(item.id)">{{item.name}}
+					<ul class='articles'>
+						<li class='article' ng-repeat="(key, article) in item.posts" ng-click="main.clickOnArticle($event, article)">{{article.title}}</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="page col-xs-12 col-sm-6 col-md-8 col-xs-6" ng-bind-html="main.content">
+			
+		</div>
+	</div>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>		
+	<script src="app.js"></script>
+</body>
 </html>
